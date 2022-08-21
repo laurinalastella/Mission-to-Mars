@@ -9,22 +9,25 @@ import pandas as pd
 from webdriver_manager.chrome import ChromeDriverManager
 import datetime as dt
 
+# executable_path = {'executable_path': 'chromedriver.exe'}
+# browser = Browser('chrome', **executable_path, headless=False)
+
 
 # Set up Splinter
 # 1. Initialize the browser.
 # 2. Create a data dictionary.
 # 3. End the WebDriver and return the scraped data.
 def scrape_all():
-
     # Initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
+    # print(executable_path)
     browser = Browser('chrome', **executable_path, headless=False)
+    # executable_path = {'executable_path': 'chromedriver.exe'}
+    # browser = Browser('chrome', **executable_path, headless=False)
 
-# When scraping, the "headless" browsing session 
-# is when a browser is run without the users 
-# seeing it at all. So, when headless=True is 
-# declared as we initiate the browser, we are 
-# telling it to run in headless mode. All of the 
+
+# When headless=True:
+# run in headless mode. All of the 
 # scraping will still be accomplished, but behind the scenes.
     news_title, news_paragraph = mars_news(browser)
     # Run all scraping functions and store results in dictionary
@@ -140,4 +143,11 @@ if __name__ == "__main__":
     # If running as script, print scraped data
     print(scrape_all())
 
+
+######### VS Code won't run these files.
+# Use the Anaconda Prompt terminal to run:
+# python app.py
+# python scraping.py
+###### Also run:
+# mongosh (not mongod like Mod says)
 
